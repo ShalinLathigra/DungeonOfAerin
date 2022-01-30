@@ -1,0 +1,16 @@
+Budget
+	What are we working with? Budget directly relates to quality of the resulting game.
+Desired Mechanics
+	Need to know upfront what is required.
+	Are you expecting complex puzzles/bossfights/crafting/etc?
+	The further it diverges from the basics, the more expensive it will be:
+		2D platformer movement
+		5 Small levels
+		Basic enemies/hazards
+		
+Story/Plot
+	Are we writing it? Would be more expensive
+Art
+	We do not have an artist, would require you to find and pay an artist separately
+	
+https://trello.com/b/yNGAQXYt

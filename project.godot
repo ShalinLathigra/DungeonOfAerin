@@ -8,10 +8,76 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "AudioClip",
+"language": "GDScript",
+"path": "res://ToolNodes/AudioClip.gd"
+}, {
+"base": "Node",
+"class": "AudioClipPlayer",
+"language": "GDScript",
+"path": "res://ToolNodes/AudioClipPlayer.gd"
+}, {
+"base": "AudioClipPlayer",
+"class": "DelayedRepeater",
+"language": "GDScript",
+"path": "res://ToolNodes/DelayedRepeater.gd"
+}, {
+"base": "Area2D",
+"class": "GroundDetector",
+"language": "GDScript",
+"path": "res://ToolNodes/GroundDetector.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Player/Player.gd"
+} ]
+_global_script_class_icons={
+"AudioClip": "",
+"AudioClipPlayer": "",
+"DelayedRepeater": "",
+"GroundDetector": "",
+"Player": ""
+}
+
 [application]
 
 config/name="DungeonOfAerin"
 config/icon="res://icon.png"
+
+[autoload]
+
+PlayerData="*res://Player/PlayerData.gd"
+
+[input]
+
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"unicode":0,"echo":false,"script":null)
+ ]
+}
+jump={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Ground"
+2d_physics/layer_3="PickUps"
 
 [physics]
 
