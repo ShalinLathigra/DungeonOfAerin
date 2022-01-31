@@ -11,8 +11,7 @@ export(float) var jump_force;
 export(int) var max_jump_msec;
 
 var _velocity: Vector2;
-var _left: float;
-var _right: float;
+var _direction: float;
 var _grounded: bool;
 var _jump_grounded: bool;
 var _jumping: bool;
@@ -35,10 +34,7 @@ func detect_environment():
 	
 	
 func process_inputs():
-	if Input.is_action_just_pressed("left"): _left = 1;
-	if Input.is_action_just_released("left"): _left = 0;
-	if Input.is_action_just_pressed("right"): _right = 1;
-	if Input.is_action_just_released("right"): _right = 0;
+	_direction = Input.get_axis("left", "right");
 	if Input.is_action_just_pressed("jump"):
 		_time_of_last_jump = OS.get_ticks_msec();
 	if Input.is_action_just_released("jump"): _jumping = false;
@@ -46,7 +42,7 @@ func process_inputs():
 # Limbs
 func handle_vel_delta(var delta : float):
 	# X vel.
-	_velocity.x = horizontal_speed * (_right - _left);
+	_velocity.x = horizontal_speed * _direction;
 	# Y vel.
 	if _jump_grounded and OS.get_ticks_msec() - _time_of_last_jump < jump_buffer_msec:
 			_jumping = true;
@@ -66,7 +62,7 @@ func handle_vel_delta(var delta : float):
 		toggle_walk_anim(false);
 		
 func apply_movement():
-	var _v = move_and_slide_with_snap(_velocity, Vector2.DOWN * 4 if _grounded else Vector2.ZERO, Vector2.UP, false);
+	var _v = move_and_slide_with_snap(_velocity, Vector2.DOWN * 4 if _grounded and not _jumping else Vector2.ZERO, Vector2.UP, true);
 	
 # Animation Handlers
 func toggle_walk_anim(var activity: bool):
