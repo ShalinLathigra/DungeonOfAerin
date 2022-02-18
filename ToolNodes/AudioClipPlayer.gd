@@ -1,27 +1,30 @@
-extends Node
+extends AudioStreamPlayer2D
 class_name AudioClipPlayer
 
 export(bool) var start_clip_trigger setget start_clip;
-
-export(bool) var playing;
 export(Resource) var current_clip;
 
 func _enter_tree():
-	print(name)
-	$AudioPlayer.stream = current_clip.clip;
-	$AudioPlayer.volume_db = current_clip.volume;
-	$AudioPlayer.pitch_scale = current_clip.pitch;
+	if current_clip:
+		stream = current_clip.clip;
+		volume_db = current_clip.volume;
+		pitch_scale = current_clip.pitch;
 	
-func play_audio():
-	if (playing): return;
-	$AudioPlayer.play(0.0);
+func play_audio(forced: bool = false):
+	if playing and not forced: return;
+	if not current_clip: return
+	
+	play(0.0);
 	playing = true;
 	
 func stop_audio():
 	playing = false;
 	
-func _on_AudioPlayer_finished():
-	playing = false;
-
-func start_clip(_input):
-	play_audio();
+func start_clip(input):
+	if input is AudioClip:
+		current_clip = input
+		stream = current_clip.clip;
+		volume_db = current_clip.volume;
+		pitch_scale = current_clip.pitch;
+	if current_clip:
+		play_audio();

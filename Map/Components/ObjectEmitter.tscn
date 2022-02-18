@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Map/Components/ObjectEmitter.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://ToolNodes/AudioClipPlayer.gd" type="Script" id=3]
+[ext_resource path="res://ToolNodes/AudioClip.gd" type="Script" id=4]
+[ext_resource path="res://Map/Components/Audio/Shoot.wav" type="AudioStream" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 4 )
+clip = ExtResource( 5 )
+volume = -20.0
+pitch = 0.5
+
+[node name="ObjectEmitter" type="Sprite"]
+modulate = Color( 1, 0, 0, 1 )
+position = Vector2( 736, -224 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+delay_msec = 1000
+active = true
+max_count = 5
+activate_clip = SubResource( 1 )
+
+[node name="DirectionIndicator" type="Sprite" parent="."]
+position = Vector2( 0, 64 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="AudioClipPlayer" type="AudioStreamPlayer2D" parent="."]
+max_distance = 1000.0
+attenuation = 1.31951
+script = ExtResource( 3 )

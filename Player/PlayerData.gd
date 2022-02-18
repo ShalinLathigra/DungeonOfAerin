@@ -26,7 +26,13 @@ func use_key(var id: int = -1):
 			ret = true;
 	#print_key_summary();
 	return ret;
-	
+
+func reset():
+	generic_key_count=0
+	used_key_count=0
+	special_key_ids=[]
+	used_key_ids=[]
+		
 func print_key_summary():
 	print("PLAYERDATA:: key summary")
 	print("Generic Keys: %d  -> Used: %d" % [generic_key_count, used_key_count])

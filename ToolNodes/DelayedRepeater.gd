@@ -1,5 +1,4 @@
 extends AudioClipPlayer
-
 class_name DelayedRepeater
 
 export(float) var delay;
@@ -7,33 +6,38 @@ export(Array, Resource) var audioclip_set;
 
 var index: int;
 var clip_count: int;
+var repeating: bool
+var finished: bool
 var coroutine;
 
 func _enter_tree():
 	clip_count = audioclip_set.size();
 
-func play_audio():
-	if (playing): return;
+func play_audio(forced: bool = false):
+	if playing or not finished and not forced: return;
 	index = 0;
 	insert_next_clip();
-	$AudioPlayer.play(0.0);
-	playing = true;
+	play(0.0);
+	repeating = true;
+	finished = false
 	
 func insert_next_clip():
 	current_clip = audioclip_set[index % clip_count];
-	$AudioPlayer.stream = current_clip.clip;
-	$AudioPlayer.volume_db = current_clip.volume;
-	$AudioPlayer.pitch_scale = current_clip.pitch;
+	stream = current_clip.clip;
+	volume_db = current_clip.volume;
+	pitch_scale = current_clip.pitch;
 	
 func stop_audio():
-	playing = false;
+	repeating = false
+	finished = true
 
 
-func _on_AudioPlayer_finished():
-	if playing:
-		$AudioPlayer.stop();
+func _on_DelayedRepeater_finished():
+	if repeating:
+		stop();
 		$Timer.start(delay);
 		yield($Timer, "timeout");
+		finished = true
 		index += 1;
 		insert_next_clip();
-		$AudioPlayer.play(0.0);
+		play(0.0);	

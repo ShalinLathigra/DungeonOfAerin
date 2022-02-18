@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
-[ext_resource path="res://Key.gd" type="Script" id=2]
+[ext_resource path="res://Map/Components/Key.gd" type="Script" id=2]
 [ext_resource path="res://ToolNodes/AudioClipPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Map/Components/Audio/KeyPickup.tres" type="Resource" id=4]
 
@@ -55,37 +55,36 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -16 ), Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
+tracks/1/path = NodePath("AudioClipPlayer:start_clip_trigger")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 0.968627, 1, 0, 1 ), Color( 0.968627, 1, 0, 1 ), Color( 0.968627, 1, 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("AudioClipPlayer:start_clip_trigger")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Key" type="Area2D"]
-modulate = Color( 0.968627, 1, 0, 1 )
+modulate = Color( 0.968627, 1, 0, 0 )
 collision_layer = 4
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 0, -0.444445 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 
@@ -97,6 +96,7 @@ anims/Idle = SubResource( 3 )
 anims/Use = SubResource( 2 )
 
 [node name="AudioClipPlayer" parent="." instance=ExtResource( 3 )]
+start_clip_trigger = true
 current_clip = ExtResource( 4 )
 
 [connection signal="body_entered" from="." to="." method="_on_Key_body_entered"]

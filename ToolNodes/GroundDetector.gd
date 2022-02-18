@@ -23,12 +23,13 @@ func triggered() -> bool:
 func set_shape(shape: Shape2D):
 	$CollisionShape2D.shape = shape;
 
-func _on_GroundDetector_body_entered(body: Node):
+func _on_GroundDetector_entered(obj):
 	if not triggered() and audio_enabled:
 		land_player.play_audio();
 		land_particles.restart();
 		land_particles.emitting = true;
-	contacts.append(body);
+	contacts.append(obj);
 
-func _on_GroundDetector_body_exited(body: Node):
-	contacts.remove(contacts.find(body));
+func _on_GroundDetector_exited(obj):
+	contacts.remove(contacts.find(obj));
+

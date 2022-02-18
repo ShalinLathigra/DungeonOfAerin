@@ -9,13 +9,17 @@ export(bool) var continuous = true;
 var t: float = 0.0;
 var direction: float = 1.0;
 var origin: Vector2;
+var occupied: bool
 
 func _enter_tree():
 	origin = position;
-	if (active):
-		activate();
 
 func _physics_process(delta):
+	if Input.is_action_pressed("down"):
+		toggle_collision(false)
+	elif not occupied and Input.is_action_just_released("down"):
+		toggle_collision(true)
+		
 	if (active):
 		t = clamp(t + delta * direction / duration, 0, 1);
 		position = origin + offset*t;
@@ -24,12 +28,22 @@ func _physics_process(delta):
 			constant_linear_velocity = Vector2.ZERO
 			active = false;
 			if continuous:
-				yield (get_tree().create_timer(pause), "timeout");
+				$Timer.start(pause)
+				yield ($Timer, "timeout");
 				direction *= -1;
+				$AudioClipPlayer.play_audio(true)
 				constant_linear_velocity = offset / duration * direction;
 				active = true;
 
-func activate(var toggle: bool = false):
-	if toggle:
-		direction *= -1;
-	active = true;
+func toggle_collision(toggle: bool = false):
+	$Body.set_deferred("disabled", not toggle)
+			
+func _on_BotDetector_body_entered(_body):
+	toggle_collision(false)
+	occupied = true; 
+	
+func _on_BotDetector_body_exited(_body):
+	toggle_collision(true)
+	occupied = false
+
+# need to add a check on Jump area. if it's full, don't do bot detector collisions
