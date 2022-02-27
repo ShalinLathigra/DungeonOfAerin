@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://Map/Tilesets/ForgottenDungeon.png" type="Texture" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform sampler2D texture_override;
+uniform float green_limiter : hint_range(0, 1);
+
+// based off of the red levels. If < c1, 
+void fragment() {
+	vec2 uv = vec2(mod(UV.x * 12.0, 1.0), mod(UV.y * 4.0, 1.0));
+	COLOR = texture(TEXTURE, UV);
+	if (COLOR.g < green_limiter){
+		COLOR = texture(texture_override, vec2(uv.x/2.0, uv.y) + vec2(0.5, 0));
+	} else {
+		COLOR = texture(texture_override, vec2(uv.x/2.0, uv.y));
+	}
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/green_limiter = 1.0
+shader_param/texture_override = ExtResource( 1 )

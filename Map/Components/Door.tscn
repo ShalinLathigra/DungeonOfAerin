@@ -1,10 +1,15 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Map/Components/DoorArt/door2.png" type="Texture" id=1]
 [ext_resource path="res://Map/Components/Door.gd" type="Script" id=2]
 [ext_resource path="res://ToolNodes/AudioClipPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ToolNodes/AudioClip.gd" type="Script" id=4]
 [ext_resource path="res://Map/Components/Audio/Locked.wav" type="AudioStream" id=5]
+[ext_resource path="res://Map/Components/DoorArt/door3.png" type="Texture" id=6]
+[ext_resource path="res://Map/Components/DoorArt/door4.png" type="Texture" id=7]
+[ext_resource path="res://Map/Components/DoorArt/door5.png" type="Texture" id=8]
+[ext_resource path="res://Map/Components/DoorArt/door1.png" type="Texture" id=9]
+[ext_resource path="res://Map/Components/DoorArt/lock.png" type="Texture" id=10]
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 4 )
@@ -17,6 +22,14 @@ script = ExtResource( 4 )
 clip = ExtResource( 5 )
 volume = -15.0
 pitch = 2.0
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 64 )
@@ -31,19 +44,17 @@ volume = -10.0
 pitch = 1.5
 
 [node name="Door" type="StaticBody2D"]
-modulate = Color( 0, 0.203922, 1, 1 )
+scale = Vector2( 1.5, 1.5 )
 collision_layer = 18
 collision_mask = 0
 script = ExtResource( 2 )
 locked_clip = SubResource( 4 )
 unlock_clip = SubResource( 5 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( -0.999996, -64 )
 scale = Vector2( 0.96875, 1 )
-texture = ExtResource( 1 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 64, 128 )
+frames = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.999996, -64 )
@@ -58,5 +69,10 @@ shape = SubResource( 2 )
 
 [node name="AudioClipPlayer" parent="." instance=ExtResource( 3 )]
 current_clip = SubResource( 3 )
+
+[node name="Lock" type="Sprite" parent="."]
+position = Vector2( -0.999992, -55 )
+scale = Vector2( 2, 2.06452 )
+texture = ExtResource( 10 )
 
 [connection signal="body_entered" from="UnlockArea" to="." method="_on_UnlockArea_body_entered"]

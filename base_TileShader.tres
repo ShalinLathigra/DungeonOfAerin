@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float resolution = 2.0;
+// based off of the red levels. If < c1, /
+void fragment() {
+	vec2 tile_uv = vec2(mod(UV.x * 6.0, 1.0), mod(UV.y * 6.0, 1.0));
+	vec2 stepped_uv_ramp = (tile_uv - mod(tile_uv * resolution, 1.0) / resolution) + .01;
+	vec2 final_uv = UV - tile_uv / 6.0 + stepped_uv_ramp / 6.0;
+	
+	COLOR = vec4(final_uv, 0, 1);
+	COLOR = texture(TEXTURE, final_uv);
+}"
+
+[resource]
+shader = SubResource( 1 )
+shader_param/resolution = 32.0

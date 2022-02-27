@@ -15,6 +15,8 @@ func _enter_tree():
 		key_id = key.get_instance_id();
 	if destination:
 		SceneRef.load_component(destination)
+		
+	$Lock.visible = locked
 
 func try_unlock():
 	if not special_key and PlayerData.use_key():
@@ -30,9 +32,9 @@ func try_unlock():
 func animate_open():
 	$AudioClipPlayer.current_clip = unlock_clip
 	$AudioClipPlayer.play_audio(true)
-	modulate = Color("00000000");
+	$Sprite.play("default")
 	set_deferred("collision_layer", 0)
-	
+	$Lock.visible = false
 	if destination:
 		SceneLoader.goto_scene(destination)
 	

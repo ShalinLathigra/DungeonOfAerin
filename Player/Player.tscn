@@ -13,24 +13,12 @@
 [ext_resource path="res://Player/ART/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Run.png" type="Texture" id=11]
 [ext_resource path="res://Player/ART/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Jump.png" type="Texture" id=12]
 [ext_resource path="res://Player/ART/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Fall.png" type="Texture" id=13]
-[ext_resource path="res://Player/ART/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_DeathNoMovement.png" type="Texture" id=14]
+[ext_resource path="res://Player/ART/FreeKnight_v1/Colour2/Outline/120x80_PNGSheets/_Death.png" type="Texture" id=14]
 [ext_resource path="res://ToolNodes/AudioClip.gd" type="Script" id=15]
 [ext_resource path="res://Player/Audio/Hurt.wav" type="AudioStream" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 26 )
-
-[sub_resource type="AtlasTexture" id=37]
-atlas = ExtResource( 13 )
-region = Rect2( 0, 0, 120, 80 )
-
-[sub_resource type="AtlasTexture" id=38]
-atlas = ExtResource( 13 )
-region = Rect2( 120, 0, 120, 80 )
-
-[sub_resource type="AtlasTexture" id=39]
-atlas = ExtResource( 13 )
-region = Rect2( 240, 0, 120, 80 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 1 )
@@ -72,45 +60,29 @@ region = Rect2( 960, 0, 120, 80 )
 atlas = ExtResource( 1 )
 region = Rect2( 1080, 0, 120, 80 )
 
-[sub_resource type="AtlasTexture" id=43]
-atlas = ExtResource( 14 )
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 13 )
 region = Rect2( 0, 0, 120, 80 )
 
-[sub_resource type="AtlasTexture" id=44]
-atlas = ExtResource( 14 )
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 13 )
 region = Rect2( 120, 0, 120, 80 )
 
-[sub_resource type="AtlasTexture" id=45]
-atlas = ExtResource( 14 )
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 13 )
 region = Rect2( 240, 0, 120, 80 )
 
-[sub_resource type="AtlasTexture" id=46]
-atlas = ExtResource( 14 )
-region = Rect2( 360, 0, 120, 80 )
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 12 )
+region = Rect2( 0, 0, 120, 80 )
 
-[sub_resource type="AtlasTexture" id=47]
-atlas = ExtResource( 14 )
-region = Rect2( 480, 0, 120, 80 )
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 12 )
+region = Rect2( 120, 0, 120, 80 )
 
-[sub_resource type="AtlasTexture" id=48]
-atlas = ExtResource( 14 )
-region = Rect2( 600, 0, 120, 80 )
-
-[sub_resource type="AtlasTexture" id=49]
-atlas = ExtResource( 14 )
-region = Rect2( 720, 0, 120, 80 )
-
-[sub_resource type="AtlasTexture" id=50]
-atlas = ExtResource( 14 )
-region = Rect2( 840, 0, 120, 80 )
-
-[sub_resource type="AtlasTexture" id=51]
-atlas = ExtResource( 14 )
-region = Rect2( 960, 0, 120, 80 )
-
-[sub_resource type="AtlasTexture" id=52]
-atlas = ExtResource( 14 )
-region = Rect2( 1080, 0, 120, 80 )
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 12 )
+region = Rect2( 240, 0, 120, 80 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 11 )
@@ -152,33 +124,61 @@ region = Rect2( 960, 0, 120, 80 )
 atlas = ExtResource( 11 )
 region = Rect2( 1080, 0, 120, 80 )
 
-[sub_resource type="AtlasTexture" id=40]
-atlas = ExtResource( 12 )
+[sub_resource type="AtlasTexture" id=55]
+atlas = ExtResource( 14 )
 region = Rect2( 0, 0, 120, 80 )
 
-[sub_resource type="AtlasTexture" id=41]
-atlas = ExtResource( 12 )
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 14 )
 region = Rect2( 120, 0, 120, 80 )
 
-[sub_resource type="AtlasTexture" id=42]
-atlas = ExtResource( 12 )
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 14 )
 region = Rect2( 240, 0, 120, 80 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 14 )
+region = Rect2( 360, 0, 120, 80 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 14 )
+region = Rect2( 480, 0, 120, 80 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 14 )
+region = Rect2( 600, 0, 120, 80 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 14 )
+region = Rect2( 720, 0, 120, 80 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 14 )
+region = Rect2( 840, 0, 120, 80 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 14 )
+region = Rect2( 960, 0, 120, 80 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 14 )
+region = Rect2( 1080, 0, 120, 80 )
 
 [sub_resource type="SpriteFrames" id=36]
 animations = [ {
-"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
-"loop": true,
-"name": "Fall",
-"speed": 10.0
-}, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ) ],
-"loop": false,
-"name": "Death",
+"frames": [ SubResource( 37 ), SubResource( 38 ), SubResource( 39 ) ],
+"loop": true,
+"name": "Fall",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
+"loop": true,
+"name": "Jump",
 "speed": 10.0
 }, {
 "frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
@@ -186,9 +186,9 @@ animations = [ {
 "name": "Run",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ) ],
-"loop": true,
-"name": "Jump",
+"frames": [ SubResource( 55 ), SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ) ],
+"loop": false,
+"name": "Death",
 "speed": 10.0
 } ]
 
@@ -196,7 +196,7 @@ animations = [ {
 extents = Vector2( 12, 30 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 23, 4 )
+extents = Vector2( 9, 4 )
 
 [sub_resource type="Resource" id=53]
 script = ExtResource( 15 )
@@ -249,7 +249,7 @@ position = Vector2( 0, -80 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 36 )
 animation = "Idle"
-frame = 1
+frame = 2
 playing = true
 
 [node name="DamageDetector" type="Area2D" parent="."]
@@ -267,7 +267,6 @@ land_player_path = NodePath("../LandPlayer")
 land_particles_path = NodePath("../LandParticles")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundDetector"]
-visible = false
 shape = SubResource( 2 )
 script = ExtResource( 7 )
 target = NodePath("..")

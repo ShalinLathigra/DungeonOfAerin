@@ -9,7 +9,8 @@ export(bool) var continuous = true;
 var t: float = 0.0;
 var direction: float = 1.0;
 var origin: Vector2;
-var occupied: bool
+var bot_occupied: bool
+var top_occupied: bool
 
 func _enter_tree():
 	origin = position;
@@ -17,7 +18,7 @@ func _enter_tree():
 func _physics_process(delta):
 	if Input.is_action_pressed("down"):
 		toggle_collision(false)
-	elif not occupied and Input.is_action_just_released("down"):
+	elif not bot_occupied and Input.is_action_just_released("down"):
 		toggle_collision(true)
 		
 	if (active):
@@ -39,11 +40,16 @@ func toggle_collision(toggle: bool = false):
 	$Body.set_deferred("disabled", not toggle)
 			
 func _on_BotDetector_body_entered(_body):
+	if top_occupied: return
 	toggle_collision(false)
-	occupied = true; 
+	bot_occupied = true; 
 	
 func _on_BotDetector_body_exited(_body):
 	toggle_collision(true)
-	occupied = false
+	bot_occupied = false
 
-# need to add a check on Jump area. if it's full, don't do bot detector collisions
+func _on_JumpArea_body_entered(_body):
+	top_occupied = true
+
+func _on_JumpArea_body_exited(_body):
+	top_occupied = false
