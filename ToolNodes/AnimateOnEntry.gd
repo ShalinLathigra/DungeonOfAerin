@@ -14,4 +14,3 @@ func animate_entry():
 func animate_exit():
 	$AnimationPlayer.play("animate_exit")
 	return $AnimationPlayer.get_animation("animate_exit").length
- 

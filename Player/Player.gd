@@ -56,6 +56,7 @@ func handle_vel_delta(var delta : float):
 	var desired_velocity_x = horizontal_speed * _direction;
 	# Y vel.
 	if _jump_grounded and OS.get_ticks_msec() - _time_of_last_jump < jump_buffer_msec:
+		print("jumping!11 ")
 		desired_velocity_x += get_floor_velocity().x;
 		_jumping = true;
 		_velocity.y = -jump_force;
@@ -84,10 +85,10 @@ func process_animation():
 	# basically, gonna base anim off vel. if x > tolerance or < tolerance, set anim + direction, else Just set idle anims
 	if _velocity.x > walk_anim_tolerance:
 		$Sprite.play("Run")
-		$Sprite.flip_h = false
+		$Sprite.scale.x = 1
 	elif _velocity.x < -walk_anim_tolerance:
 		$Sprite.play("Run")
-		$Sprite.flip_h = true
+		$Sprite.scale.x = -1
 	else:
 		$Sprite.play("Idle")
 	if not is_on_floor():
@@ -95,7 +96,7 @@ func process_animation():
 			$Sprite.play("Fall")
 		else:
 			$Sprite.play("Jump")
-		
+
 func toggle_walk_effects(var activity: bool):
 	if (activity):
 		$WalkPlayer.play_audio();

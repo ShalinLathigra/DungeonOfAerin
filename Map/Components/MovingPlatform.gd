@@ -5,6 +5,7 @@ export(float) var duration = 1.0;
 export(float) var pause = 1.0;
 export(bool) var active = true;
 export(bool) var continuous = true;
+export(bool) var permeable = false;
 
 var t: float = 0.0;
 var direction: float = 1.0;
@@ -37,7 +38,8 @@ func _physics_process(delta):
 				active = true;
 
 func toggle_collision(toggle: bool = false):
-	$Body.set_deferred("disabled", not toggle)
+	if permeable:
+		 $Body.set_deferred("disabled", not toggle)
 			
 func _on_BotDetector_body_entered(_body):
 	if top_occupied: return

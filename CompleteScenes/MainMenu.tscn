@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
+[ext_resource path="res://Music/An Unlikely Hero (LOOP).wav" type="AudioStream" id=1]
 [ext_resource path="res://UI/atlantis.headline-bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/GenericButton.gd" type="Script" id=3]
 [ext_resource path="res://ToolNodes/AnimateOnEntry.gd" type="Script" id=4]
@@ -22,13 +23,13 @@ load_path = "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
 [sub_resource type="Resource" id=5]
 script = ExtResource( 6 )
 clip = ExtResource( 8 )
-volume = -20.0
+volume = -45.0
 pitch = 1.0
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 6 )
 clip = ExtResource( 9 )
-volume = -5.0
+volume = -35.0
 pitch = 1.0
 
 [sub_resource type="DynamicFont" id=1]
@@ -59,6 +60,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -70.0, -40.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -118,6 +143,38 @@ tracks/3/keys = {
 "method": "call_deferred"
 } ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -40.0, -70.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AudioStreamPlayer:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Control" type="Control"]
 script = ExtResource( 4 )
@@ -143,7 +200,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-next = "res://CompleteScenes/player_test.tscn"
+next = "res://CompleteScenes/Forest_0.tscn"
 anim = NodePath("../AnimationPlayer")
 aud = NodePath("../AudioClipPlayer")
 hover_clip = SubResource( 5 )
@@ -159,6 +216,9 @@ text = "Hello World"
 align = 1
 valign = 1
 uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/animate_entry = SubResource( 3 )
@@ -166,11 +226,18 @@ anims/animate_exit = SubResource( 2 )
 
 [node name="Icon" type="Sprite" parent="."]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 723.2, 288 )
+position = Vector2( 617.6, 288 )
 scale = Vector2( 17, 17 )
 texture = SubResource( 9 )
 
 [node name="AudioClipPlayer" parent="." instance=ExtResource( 7 )]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 12 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -67.0
 
 [connection signal="mouse_entered" from="SceneButton" to="SceneButton" method="_on_SceneButton_mouse_entered"]
 [connection signal="pressed" from="SceneButton" to="SceneButton" method="_on_TextureButton_pressed"]

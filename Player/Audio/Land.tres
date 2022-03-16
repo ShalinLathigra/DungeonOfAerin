@@ -6,5 +6,5 @@
 [resource]
 script = ExtResource( 1 )
 clip = ExtResource( 2 )
-volume = 0.0
+volume = -20.0
 pitch = 1.0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Blasting Through the Sky (LOOP).wav-f7bcdd8955164e94bd96c4b6b2233488.sample"
+
+[deps]
+
+source_file="res://Music/Blasting Through the Sky (LOOP).wav"
+dest_files=[ "res://.import/Blasting Through the Sky (LOOP).wav-f7bcdd8955164e94bd96c4b6b2233488.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

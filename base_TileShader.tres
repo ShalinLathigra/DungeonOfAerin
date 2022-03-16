@@ -16,4 +16,4 @@ void fragment() {
 
 [resource]
 shader = SubResource( 1 )
-shader_param/resolution = 32.0
+shader_param/resolution = 64.0

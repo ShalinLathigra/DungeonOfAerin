@@ -36,7 +36,7 @@ func reset():
 func print_key_summary():
 	print("PLAYERDATA:: key summary")
 	print("Generic Keys: %d  -> Used: %d" % [generic_key_count, used_key_count])
-	print("Has Keys: ")
+	print("Has Keys: ")			
 	print(special_key_ids)
 	print("Used Keys: ")
 	print(used_key_ids)

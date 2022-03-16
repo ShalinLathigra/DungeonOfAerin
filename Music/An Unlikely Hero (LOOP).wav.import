@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/An Unlikely Hero (LOOP).wav-40b6737afcc084e3c070fc6ad4e1042a.sample"
+
+[deps]
+
+source_file="res://Music/An Unlikely Hero (LOOP).wav"
+dest_files=[ "res://.import/An Unlikely Hero (LOOP).wav-40b6737afcc084e3c070fc6ad4e1042a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

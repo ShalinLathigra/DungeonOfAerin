@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Happy Quest (LOOP).wav-0807e59477d50f16ee29beb018d95529.sample"
+
+[deps]
+
+source_file="res://Music/Happy Quest (LOOP).wav"
+dest_files=[ "res://.import/Happy Quest (LOOP).wav-0807e59477d50f16ee29beb018d95529.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

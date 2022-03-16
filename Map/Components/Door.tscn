@@ -14,13 +14,13 @@
 [sub_resource type="Resource" id=4]
 script = ExtResource( 4 )
 clip = ExtResource( 5 )
-volume = -15.0
+volume = -25.0
 pitch = 1.0
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 4 )
 clip = ExtResource( 5 )
-volume = -15.0
+volume = -25.0
 pitch = 2.0
 
 [sub_resource type="SpriteFrames" id=6]
@@ -40,11 +40,10 @@ extents = Vector2( 48, 48 )
 [sub_resource type="Resource" id=3]
 script = ExtResource( 4 )
 clip = ExtResource( 5 )
-volume = -10.0
+volume = -35.0
 pitch = 1.5
 
 [node name="Door" type="StaticBody2D"]
-scale = Vector2( 1.5, 1.5 )
 collision_layer = 18
 collision_mask = 0
 script = ExtResource( 2 )
@@ -68,6 +67,8 @@ position = Vector2( 0, -64 )
 shape = SubResource( 2 )
 
 [node name="AudioClipPlayer" parent="." instance=ExtResource( 3 )]
+stream = ExtResource( 5 )
+volume_db = -35.0
 current_clip = SubResource( 3 )
 
 [node name="Lock" type="Sprite" parent="."]

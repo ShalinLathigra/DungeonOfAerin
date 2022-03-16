@@ -15,7 +15,7 @@ func _enter_tree():
 		key_id = key.get_instance_id();
 	if destination:
 		SceneRef.load_component(destination)
-		
+		modulate = Color(0,0,0,0)
 	$Lock.visible = locked
 
 func try_unlock():

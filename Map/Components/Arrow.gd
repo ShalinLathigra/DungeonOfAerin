@@ -1,7 +1,7 @@
 extends Area2D
 class_name Arrow
 
-export(Vector2) var direction setget init;
+export(Vector2) var direction;
 export(float) var speed;
 
 var active: bool;
@@ -9,24 +9,30 @@ var start_modulate: Color;
 
 func _ready():
 	active = false;
-	modulate = Color("00000000");
 
 func _physics_process(delta: float):
 	if not active: return;
 	position += direction * speed * delta;
 
 func init(dir: Vector2):
-	set_active(true);
-	modulate = Color.red;
+	active = true;
+	toggle_collisions(active);
 	direction = dir;
 	rotation = direction.angle();
 	position = Vector2.ZERO;
+	$Sprite.modulate = Color.white
 
 func _on_Arrow_body_entered(_body: Node):
-	set_active(false);
-	modulate = Color("00000000");
+	direction = Vector2.ZERO
+	toggle_collisions(false);
+	$Sprite.play("Impact")
 
-func set_active(a: bool):
-	active = a;
+func toggle_collisions(a: bool):
 	set_deferred("monitorable", a);
 	set_deferred("monitoring", a);
+
+func _on_Sprite_animation_finished():
+	$Sprite.frame = 0	
+	$Sprite.playing = false
+	$Sprite.modulate = Color(0,0,0,0)
+	active = false;
