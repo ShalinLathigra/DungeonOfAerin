@@ -56,7 +56,6 @@ func handle_vel_delta(var delta : float):
 	var desired_velocity_x = horizontal_speed * _direction;
 	# Y vel.
 	if _jump_grounded and OS.get_ticks_msec() - _time_of_last_jump < jump_buffer_msec:
-		print("jumping!11 ")
 		desired_velocity_x += get_floor_velocity().x;
 		_jumping = true;
 		_velocity.y = -jump_force;

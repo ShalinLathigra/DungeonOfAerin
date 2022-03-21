@@ -6,6 +6,7 @@ export(NodePath) var key_start_path;
 export(Resource) var locked_clip;
 export(Resource) var unlock_clip;
 export(String, FILE) var destination;
+export(String) var web_destination;
 var key_id: int;
 
 		
@@ -37,6 +38,9 @@ func animate_open():
 	$Lock.visible = false
 	if destination:
 		SceneLoader.goto_scene(destination)
+	if web_destination:
+		var _r = OS.shell_open(web_destination)
+	
 	
 func animate_failed():
 	$AudioClipPlayer.current_clip = locked_clip

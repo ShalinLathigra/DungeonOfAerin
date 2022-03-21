@@ -278,18 +278,34 @@ hover_clip = SubResource( 5 )
 press_clip = SubResource( 6 )
 
 [node name="RichTextLabel" type="Label" parent="SceneButton"]
+margin_left = 99.303
+margin_right = 528.303
+margin_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+text = "Welcome to the Kingdom of Aerin"
+align = 1
+uppercase = true
+percent_visible = 0.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="Label" parent="SceneButton"]
 margin_left = -114.0
 margin_right = 315.0
 margin_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
-text = "Welcome to the Undead
+text = "Congratulations!
+Victory is yours!
 
-Press 'Space' to begin"
+Press space to open the minting portal
+and Claim your Reward!"
 align = 1
 uppercase = true
-percent_visible = 0.497727
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -299,8 +315,9 @@ anims/animate_entry = SubResource( 3 )
 anims/animate_exit = SubResource( 2 )
 
 [node name="Icon" type="Sprite" parent="."]
+visible = false
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 512, 288 )
+position = Vector2( -944, 288 )
 scale = Vector2( 17, 17 )
 texture = SubResource( 9 )
 
@@ -311,7 +328,7 @@ frames = SubResource( 12 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -70.0
+volume_db = -49.0
 
 [node name="TextPlayer" type="AnimationPlayer" parent="."]
 anims/TextScroll = SubResource( 13 )

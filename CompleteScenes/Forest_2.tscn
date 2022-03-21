@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Map/Components/Camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://base_TileShader.tres" type="Material" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://Map/Tilesets/object_0004_pointer_blank.png" type="Texture" id=15]
 [ext_resource path="res://Map/Tilesets/speed3.png" type="Texture" id=16]
 [ext_resource path="res://Music/Blasting Through the Sky (LOOP).wav" type="AudioStream" id=17]
+[ext_resource path="res://Map/Components/AirSpawner.gd" type="Script" id=19]
 
 [sub_resource type="StreamTexture" id=9]
 flags = 2
@@ -71,6 +72,30 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Player/AirSpawner:active")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Player/AirSpawner:time_of_last_shot")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 7500 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -252,11 +277,18 @@ scale = Vector2( 17.0988, 11.9636 )
 
 [node name="Icon" type="Sprite" parent="Player"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 0, -163 )
+position = Vector2( 1, -163 )
 scale = Vector2( 22.625, 13.5 )
 z_index = 100
 z_as_relative = false
 texture = SubResource( 9 )
+
+[node name="AirSpawner" type="Node2D" parent="Player"]
+script = ExtResource( 19 )
+objectType = "res://Map/Components/AirEnemy.tscn"
+shot_delay = 1250
+time_of_last_shot = 7500
+active = true
 
 [node name="Keys" type="Node" parent="."]
 
@@ -369,21 +401,21 @@ rotation = -1.57651
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 16 )
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="Ground" parent="Node2D" instance=ExtResource( 12 )]
+[node name="Ground" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 632, -448 )
 _velocity = Vector2( 64, 0 )
 
-[node name="Ground5" parent="Node2D" instance=ExtResource( 12 )]
+[node name="Ground5" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 80, -56 )
 _velocity = Vector2( 64, 0 )
 
-[node name="Ground2" parent="Node2D" instance=ExtResource( 12 )]
+[node name="Ground2" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 1768, 456 )
 _velocity = Vector2( 64, 0 )
 
-[node name="Ground3" parent="Node2D" instance=ExtResource( 12 )]
+[node name="Ground3" parent="Enemies" instance=ExtResource( 12 )]
 position = Vector2( 1440, -184 )
 _velocity = Vector2( 64, 0 )
 

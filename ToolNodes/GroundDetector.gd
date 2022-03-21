@@ -23,7 +23,6 @@ func set_shape(shape: Shape2D):
 	$CollisionShape2D.shape = shape;
 
 func _on_GroundDetector_entered(obj):
-	print(obj)
 	if not triggered() and audio_enabled:
 		land_player.play_audio();
 		land_particles.restart();
