@@ -271,7 +271,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-next = "res://CompleteScenes/Forest_3.tscn"
+next = "res://CompleteScenes/Forest_0.tscn"
 anim = NodePath("../AnimationPlayer")
 aud = NodePath("../AudioClipPlayer")
 hover_clip = SubResource( 5 )
@@ -284,12 +284,10 @@ margin_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
-text = "Welcome to the Undead
-
-Press 'Space' to begin"
+text = "Welcome to the Kingdom of Aerin"
 align = 1
 uppercase = true
-percent_visible = 0.497727
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -7,6 +7,7 @@ export(Resource) var locked_clip;
 export(Resource) var unlock_clip;
 export(String, FILE) var destination;
 export(String) var web_destination;
+export(bool) var door_visible = true;
 var key_id: int;
 
 		
@@ -16,6 +17,7 @@ func _enter_tree():
 		key_id = key.get_instance_id();
 	if destination:
 		SceneRef.load_component(destination)
+	if not door_visible:
 		modulate = Color(0,0,0,0)
 	$Lock.visible = locked
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Music/An Unlikely Hero (LOOP).wav" type="AudioStream" id=1]
 [ext_resource path="res://UI/atlantis.headline-bold.ttf" type="DynamicFontData" id=2]
@@ -9,6 +9,10 @@
 [ext_resource path="res://ToolNodes/AudioClipPlayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/Audio/MouseEntered.wav" type="AudioStream" id=8]
 [ext_resource path="res://UI/Audio/Start.wav" type="AudioStream" id=9]
+[ext_resource path="res://CompleteScenes/TextureButton.gd" type="Script" id=10]
+[ext_resource path="res://UI/grey_square.png" type="Texture" id=12]
+[ext_resource path="res://UI/dgrey_square.png" type="Texture" id=13]
+[ext_resource path="res://UI/white_square.png" type="Texture" id=14]
 
 [sub_resource type="InputEventAction" id=10]
 action = "jump"
@@ -197,30 +201,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.42, 1.755, 2.225, 2.425, 2.84, 3.25, 3.39, 3.55, 4.23, 4.505, 5.115, 5.27, 5.615, 5.895, 6.235, 6.6, 6.91, 7.205, 7.44, 7.68, 8.285, 8.525, 9.51, 9.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( -0.01 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "Welcome to the Kingdom of Aerin", "We1c0me to the Kingdom of Aerin", "Welc0me to the Kingdom of Aerin", "W3lcom3 t0 7he K1n9dom of Aerin", "Welcome to the Kingdom of Aerin", "Welcome to the K1ngd0m of Aer1n", "Welcome to the Kingdom of Aerin", "Welcome to the Kingdom of Aerin", "W3lcome 70 th3 Kingdom of A3r1n", "Welcome to the Kingdom of Aerin", "Welcome to the Kingdom of Aerin", "W31com3 0 7h3 Kin960m 0f Aer1n", "Welcome to the Kingdom of Aerin", "W31com3 to th3 K1ngdom of Aerin", "Welcome to the Kingdom of Aerin", "Welcome to the Undead
+"values": [ "Congratulations!
+Victory is yours!
 
-Press 'Space' to begin", "Welc0m3 to th3 Undead
-
-Press 'Space' to begin", "Welcome to the Undead
-
-Press 'Space' to begin", "W3lc0me 7o the Und3ad
-
-Press 'Space' to begin", "We1c0me 70 th3 Und34d
-
-Press 'Space' to begin", "Welcome to the Undead
-
-Press 'Space' to begin", "Welcom3 to th3 Undead
-
-Pr355 '5p4c3' to 63gin", "Welcome to the Undead
-
-Press 'Space' to begin", "Welcom3 to th3 Undead
-
-Pr355 '5p4c3' to 63gin", "Welcome to the Undead
-
-Press 'Space' to begin" ]
+Use the buttons to claim your Reward!" ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("SceneButton/RichTextLabel:percent_visible")
@@ -229,22 +216,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.9, 3.375, 5.275, 6.08, 6.23, 6.235, 7.46, 7.98, 8.87 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 2.9 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0, 1.0, 0.48, 0.48, 0.35, 0.497727, 0.497727, 1.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("SceneButton/RichTextLabel:rect_position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.9, 3.375, 5.275, 6.08, 6.225, 6.23, 7.465 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 113, 0 ), Vector2( -113, 0 ), Vector2( -113, 0 ), Vector2( -4, 0 ), Vector2( -4, 0 ), Vector2( -65, 0 ), Vector2( -114, 0 ) ]
+"values": [ 0.0, 1.0 ]
 }
 
 [node name="Control" type="Control"]
@@ -278,13 +253,17 @@ hover_clip = SubResource( 5 )
 press_clip = SubResource( 6 )
 
 [node name="RichTextLabel" type="Label" parent="SceneButton"]
-margin_left = 99.303
-margin_right = 528.303
-margin_bottom = 81.0
+margin_left = -146.5
+margin_top = -28.0
+margin_right = 347.5
+margin_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
-text = "Welcome to the Kingdom of Aerin"
+text = "Congratulations!
+Victory is yours!
+
+Use the buttons to claim your Reward!"
 align = 1
 uppercase = true
 percent_visible = 0.0
@@ -292,20 +271,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel2" type="Label" parent="SceneButton"]
-margin_left = -114.0
-margin_right = 315.0
-margin_bottom = 81.0
+[node name="RichTextLabel3" type="Label" parent="SceneButton"]
+margin_left = -146.5
+margin_top = -28.0
+margin_right = 347.5
+margin_bottom = 109.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 1 )
 text = "Congratulations!
 Victory is yours!
 
-Press space to open the minting portal
-and Claim your Reward!"
+Use the buttons to claim your Reward!"
 align = 1
 uppercase = true
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -317,7 +297,7 @@ anims/animate_exit = SubResource( 2 )
 [node name="Icon" type="Sprite" parent="."]
 visible = false
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( -944, 288 )
+position = Vector2( 512, 288 )
 scale = Vector2( 17, 17 )
 texture = SubResource( 9 )
 
@@ -328,10 +308,72 @@ frames = SubResource( 12 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -49.0
+volume_db = -70.0
 
 [node name="TextPlayer" type="AnimationPlayer" parent="."]
 anims/TextScroll = SubResource( 13 )
 
+[node name="TextureButton2" type="TextureButton" parent="."]
+margin_left = 309.0
+margin_top = 357.0
+margin_right = 491.0
+margin_bottom = 421.0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 12 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel2" type="Label" parent="TextureButton2"]
+margin_left = -157.0
+margin_top = 20.0
+margin_right = 337.0
+margin_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+text = "Open Page
+"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+margin_left = 549.0
+margin_top = 357.0
+margin_right = 731.0
+margin_bottom = 421.0
+texture_normal = ExtResource( 13 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 12 )
+expand = true
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+link_text = "https://thekingdomofaerin.io/"
+
+[node name="RichTextLabel3" type="Label" parent="TextureButton3"]
+margin_left = -158.0
+margin_top = 20.0
+margin_right = 336.0
+margin_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+text = "Copy Link
+"
+align = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="mouse_entered" from="SceneButton" to="SceneButton" method="_on_SceneButton_mouse_entered"]
 [connection signal="pressed" from="SceneButton" to="SceneButton" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="TextureButton2" to="TextureButton3" method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="TextureButton3" to="TextureButton3" method="_on_TextureButton3_pressed"]

@@ -65,7 +65,7 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = ExtResource( 1 )
 animation = "Run"
-frame = 2
+frame = 4
 playing = true
 offset = Vector2( 4, -25 )
 
@@ -95,7 +95,6 @@ audioclip_set = [ ExtResource( 6 ), ExtResource( 8 ) ]
 
 [node name="WalkParticles" type="CPUParticles2D" parent="."]
 z_index = 1
-z_as_relative = false
 emitting = false
 amount = 16
 lifetime = 0.5

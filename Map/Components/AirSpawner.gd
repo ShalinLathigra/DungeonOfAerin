@@ -4,6 +4,7 @@ class_name AirSpawner
 export(String, FILE) var objectType;
 export(int) var shot_delay;
 export(int) var time_of_last_shot;
+export(int) var entry_time;
 export(bool) var active;
 
 var direction: Vector2;
@@ -13,10 +14,14 @@ var last_index: int;
 func _enter_tree():
 	last_index = 0;
 	SceneRef.load_component(objectType)
+	
+func start():
+	active = true;
+	entry_time = OS.get_ticks_msec()
 		
 func _process(_delta):
 	if not active: return;
-	if OS.get_ticks_msec() > time_of_last_shot + shot_delay:
+	if OS.get_ticks_msec() > time_of_last_shot + shot_delay + entry_time:
 		var next = get_next_index();
 		var directions = [-1.0, 1.0];
 		var d = directions[randi() % 2];
